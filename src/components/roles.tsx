@@ -191,7 +191,7 @@ const Roles: React.FC = () => {
           }}
         />
       </div>
-      <div style={{backgroundColor:'red', alignSelf: 'flex-end', width: 300}}>
+      <div style={{width: 300}}>
         <button
           style={{
             marginTop: '20px',
@@ -202,7 +202,6 @@ const Roles: React.FC = () => {
             border: 'none',
             borderRadius: '3px',
             width: 200,
-            alignSelf: 'flex-end',
             cursor: canOrder ? 'pointer' : 'not-allowed',
             opacity: canOrder ? 1 : 0.5,
           }}

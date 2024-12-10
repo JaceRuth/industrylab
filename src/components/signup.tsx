@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
 import './styling/login.css';
 import crypto from "crypto-js";
+import { hashPassword, SALT } from './hashingService';
 
 interface Props {
-  mockAPIPost: (email: string, hashedPassword: string, salt: string) => void;
+  mockAPIPost: (email: string, hashedPassword: string) => void;
 }
 
 const Login: React.FC<Props>= ({mockAPIPost}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const SALT = "constant_salt_value";
 
-  // Function to hash with salt
-  const hashWithSalt = (password: string) => {
-    const saltedPassword = SALT + password;
-    return crypto.SHA256(saltedPassword).toString(crypto.enc.Hex);
-  };
 
   // TODO: Handle the submission of the password. Salt and hash the password and 
   // and "store" it in the API. 
@@ -30,15 +25,12 @@ const Login: React.FC<Props>= ({mockAPIPost}) => {
     }
 
     try {
-      const hashedPassword = await hashWithSalt(password);
       setError("");
 
       // Pass data to parent (saltingPage)
       if (mockAPIPost) {
-        mockAPIPost(email, hashedPassword, SALT);
+        mockAPIPost(email, password);
       }
-
-      console.log("Signup successful!", { email, hashedPassword });
     } catch (error) {
       console.error("Error hashing password:", error);
       setError("An error occurred. Please try again.");

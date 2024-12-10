@@ -49,4 +49,6 @@ export class MockAuthService {
     const userType = this.currentUser.userType as UserType; // Explicitly assert type
     return permissionsByPage[page][userType];
   }
+
+  
 }
