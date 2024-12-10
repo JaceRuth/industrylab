@@ -1,23 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./styling/header.css"
 
 const Header = () => {
   return (
-    <header style={headerStyles}>
-      <nav style={navStyles}>
-        <h1 style={titleStyles}>Cyber Security Lab</h1>
-        <ul style={listStyles}>
-          <li style={itemStyles}>
-            <Link to="/" style={linkStyles}>Home</Link>
+    <header className="header">
+      <nav className="nav">
+        <h1 className="title">Cyber Security Lab</h1>
+        <ul className="list">
+          <li className="item">
+            <Link to="/" className="link">Home</Link>
           </li>
-          <li style={itemStyles}>
-            <Link to="/salting" style={linkStyles}>Salting</Link>
+          <li className="item">
+            <Link to="/salting" className="link">Salting</Link>
           </li>
-          <li style={itemStyles}>
-            <Link to="/authentication" style={linkStyles}>Authentication</Link>
+          <li className="item">
+            <Link to="/authentication" className="link">Authentication</Link>
           </li>
-          <li style={itemStyles}>
-            <Link to="/roles" style={linkStyles}>Roles</Link>
+          <li className="item">
+            <Link to="/roles" className="link">Roles</Link>
           </li>
         </ul>
       </nav>
@@ -25,39 +26,5 @@ const Header = () => {
   );
 };
 
-const headerStyles = {
-  backgroundColor: "#282c34",
-  padding: "10px 20px",
-  color: "#fff",
-  textAlign: "center",
-};
-
-const navStyles = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-};
-
-const titleStyles = {
-  margin: "0",
-  fontSize: "24px",
-};
-
-const listStyles = {
-  display: "flex",
-  listStyleType: "none",
-  margin: "0",
-  padding: "0",
-};
-
-const itemStyles = {
-  margin: "0 10px",
-};
-
-const linkStyles = {
-  color: "#61dafb",
-  textDecoration: "none",
-  fontSize: "18px",
-};
-
 export default Header;
+

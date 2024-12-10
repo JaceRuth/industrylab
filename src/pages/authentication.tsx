@@ -1,5 +1,5 @@
 import React from "react";
-import Authentication from "../components/authentication.tsx"
+import Authentication from "../components/authentication"
 
 const AuthenticationPage= () => {
   return <Authentication></Authentication>

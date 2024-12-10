@@ -1,5 +1,5 @@
 import React from "react";
-import Roles from "../components/signup.tsx"
+import Roles from "../components/roles"
 
 const RolesPage= () => {
   return <Roles></Roles>

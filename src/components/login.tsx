@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import './styling/login.css';
 import crypto from "crypto-js";
 
-interface Props {
-  mockAPIPost: (email: string, hashedPassword: string, salt: string) => void;
-}
 
-const Login: React.FC<Props>= ({mockAPIPost}) => {
+interface Props {
+    mockAPIPull: (email: string, hashedPassword: string) => void;
+  }
+const Login: React.FC<Props> = ({mockAPIPull}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  // todo: Add salt value
   const SALT = "constant_salt_value";
 
-  // Function to hash with salt
-  const hashWithSalt = (password: string) => {
+   // Function to hash with salt
+   const hashWithSalt = (password: string) => {
     const saltedPassword = SALT + password;
     return crypto.SHA256(saltedPassword).toString(crypto.enc.Hex);
   };
@@ -34,8 +35,8 @@ const Login: React.FC<Props>= ({mockAPIPost}) => {
       setError("");
 
       // Pass data to parent (saltingPage)
-      if (mockAPIPost) {
-        mockAPIPost(email, hashedPassword, SALT);
+      if (mockAPIPull) {
+        mockAPIPull(email, hashedPassword);
       }
 
       console.log("Signup successful!", { email, hashedPassword });
@@ -47,7 +48,7 @@ const Login: React.FC<Props>= ({mockAPIPost}) => {
 
   return (
     <div className="login-container">
-      <h1>Sign Up</h1>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         {error && <p className="error">{error}</p>}
         <div className="form-group">
@@ -72,7 +73,7 @@ const Login: React.FC<Props>= ({mockAPIPost}) => {
             required
           />
         </div>
-        <button type="submit">Signup</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
