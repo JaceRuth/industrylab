@@ -22,7 +22,7 @@ const SaltingPage= () => {
       setMessage("Error: Email already exists!");
       return;
     }
-    // to do: hash password and store in database
+    // TO DO: hash password and store in database
     const hashedPassword = hashPassword(password as string);
     database.set(email as string, { hash: hashedPassword, salt: SALT });
     

@@ -1,4 +1,3 @@
-// MockAuthService.ts
 export type UserType = 'admin' | 'editor' | 'viewer';
 
 export interface Permission {
