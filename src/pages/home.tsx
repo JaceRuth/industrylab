@@ -1,12 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import React from "react"; 
 import "../components/styling/home.css"
 
 const HomePage = () => {
   return (
     <div className="home-container">
-      <h1>Welcome to the Lab</h1>
-      <p>Your guide to important topics: Salting, Input Validation, and Roles & Permissions.</p>
+      <h1>Welcome to the Industry Lab</h1>
+      <p>Your introduction Salting, Input Validation, and Roles & Permissions.</p>
 
       <div className="sections">
         <div className="section" onClick={() => window.location.href='/salting'}>
