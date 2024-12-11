@@ -33,7 +33,7 @@ const SaltingPage= () => {
     setMatchLogin(email === signupEmail && loginHash === signupHash);
   };
 
-
+  // Function to pull credentials in the "database"
   const apiPullUser = (email: React.SetStateAction<string>, attemptedPassowrd: React.SetStateAction<string>) => {
     if(database.has(email as string)){
       // todo: get the salt from the database and check the password
@@ -55,7 +55,6 @@ const SaltingPage= () => {
   return (
   <div>
     <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
-        {/* Two Login components side by side */}
         <div> 
           <Signup mockAPIPost={apiPostUser}></Signup>
         </div>

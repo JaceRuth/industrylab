@@ -17,7 +17,7 @@ const getCurrentUser = () => {
     return {
         id: '1',
         name: 'John Doe',
-        userType: 'admin',
+        userType: 'editor',
     };
 }
 
@@ -34,18 +34,16 @@ const permissionsByPage: Record<string, Record<UserType, Permission>> = {
 export class MockAuthService {
   private currentUser = getCurrentUser();
 
-  // Simulates a login operation
   login(user: User) {
     this.currentUser = user;
   }
-
 
   getPermissions(page: string): Permission {
     if (!this.currentUser || page === '') {
       return { canRead: false, canWrite: false, canExecute: false };
     }
   
-    const userType = this.currentUser.userType as UserType; // Explicitly assert type
+    const userType = this.currentUser.userType as UserType; 
     return permissionsByPage[page][userType];
   }
 

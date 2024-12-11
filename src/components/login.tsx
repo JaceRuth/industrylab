@@ -10,20 +10,14 @@ const Login: React.FC<Props> = ({mockAPIPull}) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   
-
-  // TODO: Handle the submission of the password. Salt and hash the password and 
-  // and "store" it in the API. 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-
-    // Basic validation
     if (!email || !password) {
       setError("Both fields are required");
       return;
     }
 
     try {
-      // Pass data to parent (saltingPage)
       if (mockAPIPull) {
         mockAPIPull(email, password);
       }
