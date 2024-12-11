@@ -1,5 +1,5 @@
 // MockAuthService.ts
-export type UserType = 'admin' | 'editor' | 'viewer' | 'guest';
+export type UserType = 'admin' | 'editor' | 'viewer';
 
 export interface Permission {
   canRead: boolean;
@@ -21,13 +21,12 @@ const getCurrentUser = () => {
     };
 }
 
-
+// TO DO: Make this permissions make sense. 
 const permissionsByPage: Record<string, Record<UserType, Permission>> = {
     'inventory': {
       admin: { canRead: true, canWrite: true, canExecute: true },
       editor: { canRead: true, canWrite: true, canExecute: false },
       viewer: { canRead: true, canWrite: false, canExecute: false },
-      guest: { canRead: false, canWrite: false, canExecute: false },
     },
   };
 

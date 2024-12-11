@@ -3,7 +3,7 @@ import { AgGridReact } from 'ag-grid-react';
 import { ColDef } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { MockAuthService } from '../authenticationSlice/authentication';
+import { MockAuthService } from '../authorizationSlice/authorization';
 
 const PAGE_NAME = 'inventory';
 const authService = new MockAuthService();
@@ -35,10 +35,10 @@ const Roles: React.FC = () => {
     setPermissions(updatedPermissions);
   }, []);
 
+  // todo: add variables that represent the the auth service and implement them.
   const canAdd = permissions.canWrite;
   const canEdit = permissions.canWrite;
   const canOrder = permissions.canExecute;
-  const canView = permissions.canRead;
 
   const handleAddRow = () => {
     if (!newRow.make || !newRow.model || newRow.lotPrice <= 0 || newRow.msrp <= 0) {
@@ -105,10 +105,10 @@ const Roles: React.FC = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '10px', // Space between elements
+            gap: '10px', 
             marginBottom: '20px',
-            flexWrap: 'nowrap', // Prevent wrapping to the next line
-            overflowX: 'auto',  // Handle overflow gracefully
+            flexWrap: 'nowrap', 
+            overflowX: 'auto',  
           }}
         >
         <input
@@ -120,7 +120,7 @@ const Roles: React.FC = () => {
             padding: '5px',
             border: '1px solid #ccc',
             borderRadius: '4px',
-            flex: '1', // Make inputs responsive
+            flex: '1', 
             width: '100px'
           }}
         />
@@ -177,7 +177,7 @@ const Roles: React.FC = () => {
           disabled={!canAdd}
           onClick={handleAddRow}
         >
-          Add Row
+          Add Car
         </button>
       </div>
       <div className="ag-theme-alpine" style={{ height: 300, width: '80%', margin: '0 auto' }}>

@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/home.tsx";
 import Salting from "./pages/saltingPage.tsx";
-import Roles from "./pages/roles.tsx";
+import Roles from "./pages/rolesPage.tsx";
 import Validation from "./pages/validation.tsx";
 import Header from "./components/header.tsx";
 
