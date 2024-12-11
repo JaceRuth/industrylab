@@ -20,7 +20,7 @@ const getCurrentUser = () => {
     };
 }
 
-// TO DO: Make this permissions make sense. 
+// TO DO: Make these permissions make sense. 
 const permissionsByPage: Record<string, Record<UserType, Permission>> = {
     'inventory': {
       admin: { canRead: true, canWrite: true, canExecute: true },
