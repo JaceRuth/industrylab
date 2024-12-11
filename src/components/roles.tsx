@@ -35,10 +35,8 @@ const Roles: React.FC = () => {
     setPermissions(updatedPermissions);
   }, []);
 
-  // todo: add variables that represent the the auth service and implement them.
-  const canAdd = permissions.canWrite;
-  const canEdit = permissions.canWrite;
-  const canOrder = permissions.canExecute;
+  // todo: add variables that represent the the auth service and implement them into the UI.
+  
 
   const handleAddRow = () => {
     if (!newRow.make || !newRow.model || newRow.lotPrice <= 0 || newRow.msrp <= 0) {
@@ -64,10 +62,9 @@ const Roles: React.FC = () => {
           color: 'white',
           border: 'none',
           borderRadius: '3px',
-          cursor: canEdit ? 'pointer' : 'not-allowed',
-          opacity: canEdit ? 1 : 0.5,
+          cursor: true ? 'pointer' : 'not-allowed',
+          opacity: true ? 1 : 0.5,
         }}
-        disabled={!canEdit}
         onClick={() => handleDeleteRow(params.rowIndex)}
       >
         Delete
@@ -171,10 +168,9 @@ const Roles: React.FC = () => {
             color: 'white',
             border: 'none',
             borderRadius: '3px',
-            cursor: canAdd ? 'pointer' : 'not-allowed',
-            opacity: canAdd ? 1 : 0.5,
+            cursor: true ? 'pointer' : 'not-allowed',
+            opacity: true ? 1 : 0.5,
           }}
-          disabled={!canAdd}
           onClick={handleAddRow}
         >
           Add Car
@@ -202,11 +198,10 @@ const Roles: React.FC = () => {
             border: 'none',
             borderRadius: '3px',
             width: 200,
-            cursor: canOrder ? 'pointer' : 'not-allowed',
-            opacity: canOrder ? 1 : 0.5,
+            cursor: true ? 'pointer' : 'not-allowed',
+            opacity: true ? 1 : 0.5,
           }}
           onClick={handleSubmitOrder}
-          disabled={!canOrder}
         >
           Submit Order
         </button>

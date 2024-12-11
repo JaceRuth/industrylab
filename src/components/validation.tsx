@@ -19,39 +19,10 @@ const Validation: React.FC = () => {
   const [zip, setZip] = useState<string>("");
   const [errors, setErrors] = useState<Errors>({});
 
-  // Regexes Used 
-  const sqlInjectionRegex = /(\b(SELECT|DROP|INSERT|DELETE|UPDATE|--|\*|\bOR\b|\bAND\b|;|--|\/\*|\*\/)\b)/i;
-  const emailRegex = /\S+@\S+\.\S+/;
-  const zipRegex = /^\d{5}(-\d{4})?$/;
 
   // TODO: Implement this method, validate all form fields by using regular expressions. 
   const validateForm = (): boolean => {
-    const newErrors: Errors = {};
-
-    if (sqlInjectionRegex.test(email)) newErrors.email = "Invalid characters detected in email.";
-    if (sqlInjectionRegex.test(password)) newErrors.password = "Invalid characters detected in password.";
-    if (sqlInjectionRegex.test(street)) newErrors.street = "Invalid characters detected in street.";
-    if (sqlInjectionRegex.test(city)) newErrors.city = "Invalid characters detected in city.";
-    if (sqlInjectionRegex.test(state)) newErrors.state = "Invalid characters detected in state.";
-    if (sqlInjectionRegex.test(zip)) newErrors.zip = "Invalid characters detected in ZIP code.";
-
-    if (!email) newErrors.email = "Email is required.";
-    else if (!emailRegex.test(email)) newErrors.email = "Email is invalid.";
-
-    if (!password) newErrors.password = "Password is required.";
-    else if (password.length < 6 || sqlInjectionRegex.test(password))
-      newErrors.password = "Password must be at least 6 characters and no Invalid Characters";
-
-    if (!street) newErrors.street = "Street is required.";
-    if (!city) newErrors.city = "City is required.";
-    if (!state) newErrors.state = "State is required.";
-    if (!zip) newErrors.zip = "ZIP code is required.";
-    else if (!zipRegex.test(zip))
-      newErrors.zip = "ZIP code is invalid.";
-
-    setErrors(newErrors);
-
-    return Object.keys(newErrors).length === 0;
+    return true;
   };
 
   const handleSubmit = (e: React.FormEvent) => {

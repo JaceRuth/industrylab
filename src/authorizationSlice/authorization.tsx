@@ -24,8 +24,8 @@ const getCurrentUser = () => {
 const permissionsByPage: Record<string, Record<UserType, Permission>> = {
     'inventory': {
       admin: { canRead: true, canWrite: true, canExecute: true },
-      editor: { canRead: true, canWrite: true, canExecute: false },
-      viewer: { canRead: true, canWrite: false, canExecute: false },
+      editor: { canRead: true, canWrite: true, canExecute: true },
+      viewer: { canRead: true, canWrite: true, canExecute: true },
     },
   };
 

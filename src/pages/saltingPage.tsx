@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Signup from "../components/signup"
 import Login from "../components/login"
 import "./styling/pages.css"
-import { hashPassword, checkPassword, SALT } from '../components/hashingService';
 
 const SaltingPage= () => {
   const [database, setDatabase] = useState<
@@ -23,13 +22,15 @@ const SaltingPage= () => {
       return;
     }
     // TO DO: hash password and store in database
-    const hashedPassword = hashPassword(password as string);
-    database.set(email as string, { hash: hashedPassword, salt: SALT });
+    const hashedPassword = ""
+    database.set(email as string, { hash: hashedPassword, salt: "" });
     
+    // TODO: set the Salt
+    setSignupSalt("")
+
     // do not touch
     setSignupEmail(email)
     setSignupHash(hashedPassword)
-    setSignupSalt(SALT)
     setMatchLogin(email === signupEmail && loginHash === signupHash);
   };
 
@@ -37,13 +38,13 @@ const SaltingPage= () => {
   const apiPullUser = (email: React.SetStateAction<string>, attemptedPassowrd: React.SetStateAction<string>) => {
     if(database.has(email as string)){
       // todo: get the salt from the database and check the password
-      let salt = database.get(email as string)?.salt
-      let hashAttempt = checkPassword(attemptedPassowrd as string, salt as string);
+      let salt = ""
+      let hashAttempt = ""
 
       // do not touch
       setLoginHash(hashAttempt)
       setLoginEmail(email)
-      if(email === signupEmail && hashAttempt === signupHash){
+      if(email === signupEmail && hashAttempt === signupHash && hashAttempt.length != 0){
         setMatchLogin(true);
       }else{
         setMatchLogin(false);
